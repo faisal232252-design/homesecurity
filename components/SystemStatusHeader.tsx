@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Wifi, Signal, BatteryCharging, Battery, Clock, ShieldCheck } from 'lucide-react';
+import { Wifi, Signal, BatteryCharging, Clock, ShieldCheck } from 'lucide-react';
 import { format } from 'date-fns';
 
 export const SystemStatusHeader: React.FC = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, ShieldAlert, Shield, BellRing } from 'lucide-react';
+import { ShieldCheck, Shield, BellRing } from 'lucide-react';
 import { SystemState } from '../types';
 
 interface SystemModeDisplayProps {
