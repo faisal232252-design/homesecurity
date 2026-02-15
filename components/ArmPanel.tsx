@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Shield, Delete, VolumeX, Timer, Lock } from 'lucide-react';
+import { X, Shield, ArrowLeft, VolumeX, Timer, Lock } from 'lucide-react';
 import { playClickSound } from '../utils/sound';
 
 interface ArmPanelProps {
@@ -110,7 +110,7 @@ export const ArmPanel: React.FC<ArmPanelProps> = ({ onClose, onConfirm }) => {
               onClick={handleDelete}
               className="h-20 w-full rounded-2xl bg-transparent hover:bg-white/5 text-white/50 transition-all active:scale-95 flex items-center justify-center hover:text-white"
             >
-              <Delete size={28} />
+              <ArrowLeft size={28} />
             </button>
           </div>
 
