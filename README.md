@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# SecureTouch 7 Pro
 
-# Run and deploy your AI Studio app
+A premium, minimalist UI concept for a 7-inch touch alarm panel featuring a video background, real-time data, and high-fidelity interactive elements.
 
-This contains everything you need to run your app locally.
+## Deployment to Netlify
 
-View your app in AI Studio: https://ai.studio/apps/drive/1aIYBUHw9e13N0m-uIvLrXkSm5u-vaxUu
+This project is configured for easy deployment to Netlify.
 
-## Run Locally
+### Prerequisites
 
-**Prerequisites:**  Node.js
+- A [Netlify](https://www.netlify.com/) account.
+- A Git provider account (GitHub, GitLab, or Bitbucket).
 
+### Steps to Deploy
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. **Push to Git**: Push this project to a repository on your Git provider.
+2. **New Site in Netlify**:
+   - Log in to your Netlify dashboard.
+   - Click **"Add new site"** > **"Import an existing project"**.
+   - Select your Git provider and authorize Netlify.
+   - Choose the repository you just pushed.
+3. **Configure Build Settings**:
+   - Netlify should automatically detect the settings from `netlify.toml`.
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+4. **Deploy**: Click **"Deploy site"**.
+
+### Manual Deployment (Drag & Drop)
+
+Alternatively, you can build the project locally and drag the output folder to Netlify:
+
+1. Run `npm run build` in your terminal.
+2. Locate the `dist` folder created in the project root.
+3. Drag and drop the `dist` folder onto the "Sites" tab in your Netlify dashboard.
+
+## Development
+
+To run the project locally:
+
+```bash
+npm install
+npm run dev
+```

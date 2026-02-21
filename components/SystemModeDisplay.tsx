@@ -17,6 +17,7 @@ export const SystemModeDisplay: React.FC<SystemModeDisplayProps> = ({ state }) =
           color: 'text-emerald-400',
           bg: 'bg-emerald-500/10',
           border: 'border-emerald-500/20',
+          ring: 'border-emerald-400', // Ring color
           glow: 'shadow-[0_0_50px_-10px_rgba(16,185,129,0.3)]'
         };
       case 'ARMED_AWAY':
@@ -27,6 +28,7 @@ export const SystemModeDisplay: React.FC<SystemModeDisplayProps> = ({ state }) =
           color: 'text-red-500',
           bg: 'bg-red-500/10',
           border: 'border-red-500/20',
+          ring: 'border-red-500',
           glow: 'shadow-[0_0_60px_-10px_rgba(239,68,68,0.4)]'
         };
       case 'ARMED_HOME':
@@ -37,6 +39,7 @@ export const SystemModeDisplay: React.FC<SystemModeDisplayProps> = ({ state }) =
           color: 'text-amber-400',
           bg: 'bg-amber-500/10',
           border: 'border-amber-500/20',
+          ring: 'border-amber-400',
           glow: 'shadow-[0_0_50px_-10px_rgba(245,158,11,0.3)]'
         };
       case 'SOS':
@@ -47,6 +50,7 @@ export const SystemModeDisplay: React.FC<SystemModeDisplayProps> = ({ state }) =
           color: 'text-white',
           bg: 'bg-red-600',
           border: 'border-red-500',
+          ring: 'border-white',
           glow: 'shadow-[0_0_80px_0px_rgba(220,38,38,0.6)] animate-pulse'
         };
     }
@@ -56,25 +60,38 @@ export const SystemModeDisplay: React.FC<SystemModeDisplayProps> = ({ state }) =
   const Icon = config.icon;
 
   return (
-    <div className={`
-      relative flex flex-col items-center justify-center 
-      w-64 h-64 rounded-full backdrop-blur-xl border-2
-      transition-all duration-500 ease-out
-      ${config.bg} ${config.border} ${config.glow}
-    `}>
-      <Icon size={80} strokeWidth={1} className={`${config.color} mb-3 transition-colors duration-500`} />
+    <div className="relative flex items-center justify-center">
       
-      <div className="text-center">
-        <h2 className={`text-2xl font-bold tracking-widest ${config.color} transition-colors duration-500`}>
-          {config.text}
-        </h2>
-        <p className="text-sm text-white/60 font-medium uppercase tracking-wider mt-1">
-          {config.subtext}
-        </p>
-      </div>
+      {/* Outer Rotating Ring (Slow) - The "Rounding" Circle */}
+      <div className={`absolute -inset-5 rounded-full border border-dashed opacity-30 animate-[spin_12s_linear_infinite] ${config.ring}`}></div>
+      
+      {/* Middle Counter-Rotating Arc Ring */}
+      <div className={`absolute -inset-1 rounded-full border border-transparent border-t-white/20 border-l-white/10 opacity-50 animate-[spin_8s_linear_infinite_reverse]`}></div>
 
-      {/* Decorative ring */}
-      <div className={`absolute inset-2 rounded-full border border-dashed opacity-30 ${config.border}`}></div>
+      {/* Main Container */}
+      <div className={`
+        relative flex flex-col items-center justify-center 
+        w-64 h-64 rounded-full backdrop-blur-xl border-2
+        transition-all duration-500 ease-out z-10
+        ${config.bg} ${config.border} ${config.glow}
+      `}>
+        <Icon size={80} strokeWidth={1} className={`${config.color} mb-3 transition-colors duration-500`} />
+        
+        <div className="text-center">
+          <h2 className={`text-2xl font-bold tracking-widest ${config.color} transition-colors duration-500`}>
+            {config.text}
+          </h2>
+          <p className="text-sm text-white/60 font-medium uppercase tracking-wider mt-1">
+            {config.subtext}
+          </p>
+        </div>
+
+        {/* Inner Decorative Ring */}
+        <div className={`absolute inset-3 rounded-full border border-white/5`}></div>
+        
+        {/* Pulsing Core Ring (behind icon) */}
+        <div className={`absolute inset-20 rounded-full bg-current opacity-5 blur-xl animate-pulse ${config.color.replace('text-', 'text-')}`}></div>
+      </div>
     </div>
   );
 };

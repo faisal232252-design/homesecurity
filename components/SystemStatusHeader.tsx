@@ -25,11 +25,38 @@ export const SystemStatusHeader: React.FC = () => {
       </div>
 
       {/* Center: Brand Logo */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 top-7">
-         <div className="flex items-center gap-2 opacity-90">
-            {/* Simple geometric logo mark */}
-            <div className="w-5 h-5 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-sm"></div>
-            <h1 className="text-lg font-bold tracking-[0.2em] font-display text-white">SECURE</h1>
+      <div className="absolute left-1/2 transform -translate-x-1/2 top-5 group cursor-pointer">
+         <div className="flex flex-col items-center">
+            <div className="flex items-center gap-3">
+                {/* Premium Abstract Logo Mark */}
+                <div className="relative w-8 h-8 flex items-center justify-center">
+                    {/* Outer Glow */}
+                    <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-md group-hover:blur-lg transition-all duration-500"></div>
+                    
+                    {/* Main Shape */}
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="relative drop-shadow-lg transform group-hover:scale-105 transition-transform duration-500">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#ffffff" />
+                                <stop offset="100%" stopColor="#94a3b8" />
+                            </linearGradient>
+                        </defs>
+                        {/* Shield-like Hexagon */}
+                        <path d="M16 2L4 8V15C4 22 9 28 16 30C23 28 28 22 28 15V8L16 2Z" fill="url(#logoGrad)" fillOpacity="0.1" stroke="url(#logoGrad)" strokeWidth="1.5" />
+                        
+                        {/* Inner S Shape / Abstract Circuit */}
+                        <path d="M16 8V14M16 18V24M12 16H20" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </div>
+
+                {/* Typography */}
+                <h1 className="text-2xl font-bold tracking-[0.3em] font-display text-white flex items-center">
+                   SECURE
+                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500 ml-1 mt-1 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>
+                </h1>
+            </div>
+            {/* Minimal Underline decoration */}
+            <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mt-2"></div>
          </div>
       </div>
 
